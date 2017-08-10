@@ -1,0 +1,17 @@
+.head-of-page {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 1em;
+}
+
+.logo {
+  display: block;
+  margin-right: 1em;
+}
+
+.title {
+  display: block;
+  margin: 0;
+}
