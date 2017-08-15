@@ -1,9 +1,41 @@
 <div class="page-header">
   <h1>FitnessDiary</h1>
 </div>
-<div>
-  <ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="#">Login</a></li>
-    <li role="presentation"><a href="#">Registrieren</a></li>
-  </ul>
-</div>
+<ngb-tabset>
+  <ngb-tab title="Login">
+    <ng-template ngbTabContent>
+      <span>Name</span>
+      <input class="form-control" placeholder="Name"/>
+      <span>Passwort</span>
+      <div class="input-group">
+        <input type="password" class="form-control" placeholder="Passwort" aria-describedby="password-visibility"/>
+        <span class="input-group-btn" id="password-visibility">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+          </button>
+        </span>
+      </div>
+      <div>
+        <button class="btn btn-default" type="button">Login</button>
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="Registrieren">
+    <ng-template ngbTabContent>
+      <!--<span>Name</span>-->
+      <!--<input class="form-control" placeholder="Name"/>-->
+      <!--<span>Passwort</span>-->
+      <!--<div class="input-group">-->
+      <!--<input type="password" class="form-control" placeholder="Passwort" aria-describedby="password-visibility"/>-->
+      <!--<span class="input-group-btn" id="password-visibility">-->
+      <!--<button class="btn btn-default" type="button">-->
+      <!--<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>-->
+      <!--</button>-->
+      <!--</span>-->
+      <!--</div>-->
+      <!--<div>-->
+      <!--<button class="btn btn-default" type="button">Login</button>-->
+      <!--</div>-->
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
