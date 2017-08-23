@@ -8,13 +8,15 @@ import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { StartWorkoutComponent } from "./start-workout/start-workout.component";
+import { DoWorkoutComponent } from "./do-workout/do-workout.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    StartWorkoutComponent
+    StartWorkoutComponent,
+    DoWorkoutComponent
   ],
   imports: [
     AppRoutingModule,
