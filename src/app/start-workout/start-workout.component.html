@@ -1,18 +1,15 @@
 <ol class="breadcrumb">
-  <li class="breadcrumb-item"><a href="dashboard">Dashboard</a></li>
+  <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
   <li class="breadcrumb-item-active">Workout</li>
 </ol>
 <div class="content-container">
   <h3>Workout starten</h3>
   <label for="workout-select">Workout</label>
-  <select class="form-control" id="workout-select">
-    <option>Freies Training</option>
-    <option>Vordefiniertes Training 1</option>
-    <option>Vordefiniertes Training 2</option>
-    <option>Vordefiniertes Training 3</option>
+  <select class="form-control" id="workout-select" [(ngModel)]="selectedID">
+    <option *ngFor="let workout of workouts" [ngValue]="workout.id">{{workout.name}}</option>
   </select>
   <div class="btn-container">
-    <!--<button type="button" class="btn btn-primary btn-lg">Start</button>-->
-    <a href="do">Start</a>
+    <button type="button" class="btn btn-primary btn-block" [routerLink]="['/do', selectedID]">Start</button>
+    <button type="button" class="btn btn-primary btn-block" [routerLink]="['/create']">Neues Workout erstellen</button>
   </div>
 </div>

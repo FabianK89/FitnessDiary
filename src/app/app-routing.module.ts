@@ -6,13 +6,15 @@ import { LoginComponent } from "./login/login.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { StartWorkoutComponent } from "./start-workout/start-workout.component";
 import { DoWorkoutComponent } from "./do-workout/do-workout.component";
+import { CreateWorkoutComponent } from "./create-workout/create-workout.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: "dashboard", component: DashboardComponent},
   {path: "start", component: StartWorkoutComponent},
-  {path: "do", component: DoWorkoutComponent}
+  {path: "create", component: CreateWorkoutComponent},
+  {path: "do/:workoutId", component: DoWorkoutComponent}
 ];
 
 @NgModule({

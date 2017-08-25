@@ -9,6 +9,8 @@ import { LoginComponent } from "./login/login.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { StartWorkoutComponent } from "./start-workout/start-workout.component";
 import { DoWorkoutComponent } from "./do-workout/do-workout.component";
+import { FormsModule } from "@angular/forms";
+import { CreateWorkoutComponent } from "./create-workout/create-workout.component";
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { DoWorkoutComponent } from "./do-workout/do-workout.component";
     LoginComponent,
     DashboardComponent,
     StartWorkoutComponent,
-    DoWorkoutComponent
+    DoWorkoutComponent,
+    CreateWorkoutComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    FormsModule,
     NgbModule.forRoot()
   ],
   providers: [],

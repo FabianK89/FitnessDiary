@@ -1,7 +1,9 @@
 export class ExerciseSet {
-  id: number;
-  workout: number;
-  exercise: number;
+  id: string;
+  setNumber: number;
+  date: Date;
+  workout: string;
+  exercise: string;
   repetitions: number;
   weight: number;
 }

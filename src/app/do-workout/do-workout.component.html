@@ -1,41 +1,87 @@
 <ol class="breadcrumb">
-  <li class="breadcrumb-item"><a href="dashboard">Dashboard</a></li>
+  <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
   <li class="breadcrumb-item-active">Workout</li>
 </ol>
 <div class="content-container">
-  <h3>Freies Training</h3>
-  <div class="input-group" *ngIf="!exerciseStarted">
-    <input type="text" class="form-control" placeholder="Übung suchen..." aria-label="Übung suchen..."
-           [disabled]="isDisabled()">
+  <h3 *ngIf="getWorkout()">{{getWorkoutName()}}</h3>
+  <div class="input-group" *ngIf="!isExerciseStarted()">
+    <input class="form-control" placeholder="Übung suchen..." aria-label="Übung suchen..."
+           [disabled]="isExerciseStarted()">
     <span class="input-group-btn">
-      <button class="btn btn-primary" type="button" [disabled]="isDisabled()" (click)="startExercise()">OK</button>
+      <button class="btn btn-primary" type="button" [disabled]="isExerciseStarted()"
+              (click)="startExercise()">OK</button>
     </span>
   </div>
-  <h4 *ngIf="exerciseStarted">Test</h4>
-  <table class="table" *ngIf="exerciseStarted">
-    <thead>
-    <tr>
-      <th>Satz</th>
-      <th>Wiederholungen</th>
-      <th>Gewicht</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let set of sets">
-      <td>{{set.id}}</td>
-      <td>
-        <input type="number" class="form-control">
-      </td>
-      <td>
-        <div class="input-group">
+  <h4 *ngIf="isExerciseStarted()">Test</h4>
+  <div *ngIf="isExerciseStarted()">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Satz</th>
+        <th>Wiederholungen</th>
+        <th>Gewicht</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let set of getSets()">
+        <td>{{set.setNumber}}</td>
+        <td>
           <input type="number" class="form-control">
-          <span class="input-group-addon">kg</span>
-        </div>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-  <button *ngIf="exerciseStarted" class="btn btn-primary" type="button" (click)="addSet()">Nächster Satz</button>
-  <a href="do">Nächste Übung</a>
-  <a href="start">Training beenden</a>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="number" class="form-control">
+            <span class="input-group-addon">kg</span>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="btn-container">
+    <button *ngIf="isExerciseStarted()" class="btn btn-primary btn-block" type="button" (click)="addSet()">Nächster
+      Satz
+    </button>
+    <button *ngIf="isExerciseStarted()" class="btn btn-primary btn-block" type="button" data-toggle="modal"
+            data-target="#finishExerciseDialog">Nächste Übung
+    </button>
+    <button class="btn btn-danger btn-block" type="button" data-toggle="modal" data-target="#finishWorkoutDialog">
+      <!--[routerLink]="['/start']"-->Training beenden
+    </button>
+  </div>
+</div>
+
+<!--Finish exercise dialog-->
+<div class="modal" id="finishExerciseDialog" tabindex="-1" role="dialog" aria-labelledby="finishExerciseTitle"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <span>Möchten Sie die nächste Übung starten?</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Nein</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="saveAndNext()">Ja</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Finish workout dialog-->
+<div class="modal" id="finishWorkoutDialog" tabindex="-1" role="dialog" aria-labelledby="finishWorkoutTitle"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="finishWorkoutTitle">Workout beenden?</h5>
+      </div>
+      <div class="modal-body">
+        <span>Möchten Sie das Workout wirklich beenden?</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Abbrechen</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" [routerLink]="['/start']">Beenden</button>
+      </div>
+    </div>
+  </div>
 </div>
